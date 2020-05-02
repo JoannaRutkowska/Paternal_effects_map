@@ -1,4 +1,4 @@
-#Title:  "Mapping the past, present and future research landscape of paternal effects "
+#Title:  "Mapping the past, present and future research landscape of paternal effects"
 #Author: "Joanna Rutkowska, Malgorzata Lagisz, Russell Bonduriansky, Shinichi Nakagawa"
 #Date:   2 May 2020
 
@@ -481,4 +481,37 @@ freq10
 # Additional notes
 # - The figure with visualisation of the clusters (Figure3a) was created in VosViewer
 # - All figure panels were assembled ourside R environment and edited for clarity and presentation.
+
+
+# Create a resaerch compendium with holepunch
+
+#holepunch makes a binder instance from this R project
+
+#install and load holepunch
+devtools::install_github("karthik/holepunch")
+library(holepunch)
+write_compendium_description(package = "Paternal_effects_map", description = "Mapping the past present and future research landscape of paternal effects") #create compedium description file
+write_dockerfile(maintainer = "ML") #Dockerfile will automatically pick the date of the last modified file, match it to that version of R and add it
+generate_badge() #generate a badge for the readme file
+
+# push the code to GitHub 
+# click on the badge or use the function below to get the build ready ahead of time.
+ 
+
+
+write_install() # Writes install.R with all your dependencies
+write_runtime() # Writes the date your code was last modified. Can be overridden.
+generate_badge() # Generates a badge you can add to your README. Clicking badge will launch the Binder.
+# ----------------------------------------------
+# push the code to GitHub
+# ----------------------------------------------
+# Then click the badge on your README or run
+build_binder() # to kick off the build process
+
+
+# #install.R
+# write_install()
+# #runtime.txt
+# write_runtime()
+# generate_badge() #add a link on the readme of the github readme to the binder instance 
 
