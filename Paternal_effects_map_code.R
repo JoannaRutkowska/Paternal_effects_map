@@ -230,7 +230,7 @@ ggplot(joined, aes(x=PY, y=TC, color = cluster, shape = map_layer))+
   ggsave("Fig-3c.pdf")  
 
 
-# Visulasiation of the empirical layer of the map as an alluvial plot
+# Visulasiation of the empirical layer of the map asalluvial plots (Figure 4)
 
 #Preparing the data by separation multiply exposure into separate rows of data
 empirical_clusters_expo <- empirical_clusters %>% separate_rows(Exposure_category, sep = "; ")
@@ -289,7 +289,7 @@ allMed3 <- alluvial_wide(select(clusterMed, Source_of_population, Taxon, Exposur
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Med cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Med-4a.pdf", scale = 6, width = 10, units=c("cm") )
+  ggsave("Fig-Med-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
 
 allTox3 <- alluvial_wide(select(clusterTox, Source_of_population, Taxon, Exposure_category ), fill_by = 'last_variable',   order_levels = c('human', 'captive', 'wild brought into captivity','men','non-human mammal', 'arthropod' ), stratum_label_size = 7,
                          col_vector_flow = col_vectorTox3a, col_vector_value = col_vectorTox3b) + 
@@ -298,7 +298,7 @@ allTox3 <- alluvial_wide(select(clusterTox, Source_of_population, Taxon, Exposur
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Tox cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Tox-4a.pdf", scale = 6, width = 10, units=c("cm"))
+  ggsave("Fig-Tox-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm"))
 
 allEE3 <- alluvial_wide(select(clusterEE,Source_of_population, Taxon, Exposure_category ), fill_by = 'last_variable',  order_levels = c('captive',  'wild brought into captivity','wild','non-human mammal', 'bird', 'fish', 'other vertebrate','arthropod', 'other invertebrate', 'plant', 'Abiotic habitat','Age','Chemical substance',  'Diet', 'Past experience', 'Physiological factor','Psychological factor'), stratum_label_size = 7,
                         col_vector_flow = col_vectorEE3a, col_vector_value = col_vectorEE3b) +
@@ -307,7 +307,7 @@ allEE3 <- alluvial_wide(select(clusterEE,Source_of_population, Taxon, Exposure_c
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'EcoEvo cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-EE-4a.pdf", scale = 6, width = 10, units=c("cm") )
+  ggsave("Fig-EE-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
 
 
 # Graphs for figure 4b
@@ -318,7 +318,7 @@ allMed4 <- alluvial_wide(select(clusterMed, Exposure_category, Maternal_exposure
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Med cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Med-4b.pdf", scale = 6, width = 10, units=c("cm") )
+  ggsave("Fig-Med-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
 
 allTox4 <- alluvial_wide(select(clusterTox, Exposure_category, Maternal_exposure, Offspring_exposure), fill_by = 'first_variable',   order_levels = c('Abiotic habitat', 'Chemical substance',  'Diet', 'Drug', 'Physiological factor', 'none', 'independent', 'diallel' , 'no' ), stratum_label_size = 7,
                          col_vector_flow = col_vectorTox4, col_vector_value = col_vectorTox4) + 
@@ -327,7 +327,7 @@ allTox4 <- alluvial_wide(select(clusterTox, Exposure_category, Maternal_exposure
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Tox cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Tox-4b.pdf", scale = 6, width = 10, units=c("cm"))
+  ggsave("Fig-Tox-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm"))
 
 allEE4 <- alluvial_wide(select(clusterEE,Exposure_category, Maternal_exposure, Offspring_exposure), fill_by = 'first_variable',  order_levels = c('Abiotic habitat','Age', 'Chemical substance', 'Diet', 'Past experience', 'Physiological factor','Psychological factor', 'none' , 'independent' , 'diallel' , 'NA', 'no', 'yes'), stratum_label_size = 7,
                         col_vector_flow = col_vectorEE4, col_vector_value = col_vectorEE4) +
@@ -336,7 +336,7 @@ allEE4 <- alluvial_wide(select(clusterEE,Exposure_category, Maternal_exposure, O
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'EcoEvo cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-EE-4b.pdf", scale = 6, width = 10, units=c("cm") )
+  ggsave("Fig-EE-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
 
 
  
