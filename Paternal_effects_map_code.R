@@ -2,17 +2,10 @@
 #Author: "Joanna Rutkowska, Malgorzata Lagisz, Russell Bonduriansky, Shinichi Nakagawa"
 #Date:   2 May 2020
 
+
 # prepare 
 
-#sessionInfo()
-#R version 3.6.0 (2019-04-26)
-#Platform: x86_64-apple-darwin15.6.0 (64-bit)
-#Running under: macOS Sierra 10.12.6
-
 rm(list=ls()) #clean up
-
-remove.packages("tibble")
-
 library(tidyverse) #tidy family and related pacakges below
 library(magrittr) #extending piping
 library(DescTools) 
@@ -482,18 +475,76 @@ freq10
 # - The figure with visualisation of the clusters (Figure3a) was created in VosViewer
 # - All figure panels were assembled ourside R environment and edited for clarity and presentation.
 
+#sessionInfo()
+# R version 3.6.0 (2019-04-26)
+# Platform: x86_64-apple-darwin15.6.0 (64-bit)
+# Running under: macOS Sierra 10.12.6
+# 
+# Matrix products: default
+# BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+# LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+# 
+# locale:
+#   [1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+# 
+# attached base packages:
+#   [1] stats     graphics  grDevices utils     datasets  methods   base     
+# 
+# other attached packages:
+#   [1] holepunch_0.1.27.9000 easyalluvial_0.2.2    plotly_4.9.2.1        ggbeeswarm_0.6.0      bibliometrix_3.0.0   
+# [6] janitor_2.0.1         readxl_1.3.1          fulltext_1.4.0        DescTools_0.99.35     magrittr_1.5         
+# [11] forcats_0.5.0         stringr_1.4.0         dplyr_0.8.5           purrr_0.3.4           readr_1.3.1          
+# [16] tidyr_1.0.2           tibble_3.0.1          ggplot2_3.3.0         tidyverse_1.3.0      
+# 
+# loaded via a namespace (and not attached):
+#   [1] clipr_0.7.0          utf8_1.1.4           tidyselect_1.0.0     htmlwidgets_1.5.1    FactoMineR_2.3      
+# [6] grid_3.6.0           hoardr_0.5.2         pROC_1.16.2          devtools_2.3.0       munsell_0.5.0       
+# [11] codetools_0.2-16     DT_0.13              rentrez_1.2.2        future_1.17.0        miniUI_0.1.1.1      
+# [16] withr_2.2.0          colorspace_1.4-1     knitr_1.28           ggalluvial_0.11.3    rstudioapi_0.11     
+# [21] leaps_3.1            stats4_3.6.0         microdemic_0.5.0     listenv_0.8.0        labeling_0.3        
+# [26] git2r_0.26.1         ini_0.3.1            rplos_0.9.0          polyclip_1.10-0      farver_2.0.3        
+# [31] rprojroot_1.3-2      vctrs_0.2.4          generics_0.0.2       xfun_0.13            ipred_0.9-9         
+# [36] R6_2.4.1             graphlayouts_0.7.0   assertthat_0.2.1     promises_1.1.0       networkD3_0.4       
+# [41] shinycssloaders_0.3  scales_1.1.0         rcrossref_1.0.0      ggraph_2.0.2         nnet_7.3-14         
+# [46] beeswarm_0.2.3       gtable_0.3.0         globals_0.12.5       processx_3.4.2       tidygraph_1.1.2     
+# [51] timeDate_3043.102    rlang_0.4.6          cliapp_0.1.0         scatterplot3d_0.3-41 dimensionsR_0.0.1   
+# [56] aRxiv_0.5.19         splines_3.6.0        lazyeval_0.2.2       ModelMetrics_1.2.2.2 selectr_0.4-2       
+# [61] broom_0.5.6          yaml_2.2.1           reshape2_1.4.4       modelr_0.1.7         backports_1.1.6     
+# [66] httpuv_1.5.2         caret_6.0-86         tools_3.6.0          lava_1.6.7           usethis_1.6.1       
+# [71] pubmedR_0.0.2        ellipsis_0.3.0       RColorBrewer_1.1-2   sessioninfo_1.1.1    ggridges_0.5.2      
+# [76] Rcpp_1.0.4.6         plyr_1.8.6           rscopus_0.6.6        progress_1.2.2       ps_1.3.2            
+# [81] prettyunits_1.1.1    rpart_4.1-15         viridis_0.5.1        haven_2.2.0          ggrepel_0.8.2       
+# [86] cluster_2.1.0        fs_1.4.1             factoextra_1.0.7     crul_0.9.0           data.table_1.12.8   
+# [91] openxlsx_4.1.4       gh_1.1.0             reprex_0.3.0         mvtnorm_1.1-0        SnowballC_0.7.0     
+# [96] whisker_0.4          storr_1.2.1          pkgload_1.0.2        evaluate_0.14        hms_0.5.3           
+# [101] mime_0.9             xtable_1.8-4         XML_3.99-0.3         rio_0.5.16           gridExtra_2.3       
+# [106] testthat_2.3.2       compiler_3.6.0       crayon_1.3.4         htmltools_0.4.0      later_1.0.0         
+# [111] expm_0.999-4         lubridate_1.7.8      DBI_1.1.0            tweenr_1.0.1         dbplyr_1.4.3        
+# [116] MASS_7.3-51.6        solrium_1.1.4        rappdirs_0.3.1       boot_1.3-25          Matrix_1.2-18       
+# [121] cli_2.0.2            parallel_3.6.0       gower_0.2.1          igraph_1.2.5         pkgconfig_2.0.3     
+# [126] flashClust_1.01-2    foreign_0.8-71       recipes_0.1.12       roxygen2_7.1.0       xml2_1.3.2          
+# [131] foreach_1.5.0        vipor_0.4.5          stringdist_0.9.5.5   prodlim_2019.11.13   bibtex_0.4.2.2      
+# [136] rvest_0.3.5          snakecase_0.11.0     callr_3.4.3          digest_0.6.25        httpcode_0.3.0      
+# [141] rmarkdown_2.1        cellranger_1.1.0     curl_4.3             shiny_1.4.0.2        lifecycle_0.2.0     
+# [146] nlme_3.1-147         jsonlite_1.6.1       desc_1.2.0           viridisLite_0.3.0    fansi_0.4.1         
+# [151] pillar_1.4.3         lattice_0.20-41      fastmap_1.0.1        httr_1.4.1           pkgbuild_1.0.7      
+# [156] survival_3.1-12      glue_1.4.0           remotes_2.1.1        zip_2.0.4            shinythemes_1.1.2   
+# [161] iterators_1.0.12     ggforce_0.3.1        class_7.3-17         stringi_1.4.6        memoise_1.1.0       
+# [166] renv_0.9.3-106       e1071_1.7-3  
 
-# Create a resaerch compendium with holepunch
+
+
+# Create a resaerch compendium with holepunch 
+#Note: this currently does not wuite wrok probably becouse this code is in a private GitHub repository)
 
 #holepunch makes a binder instance from this R project
 
 #install and load holepunch
 devtools::install_github("karthik/holepunch")
 library(holepunch)
-write_compendium_description(package = "Paternal_effects_map", description = "Mapping the past present and future research landscape of paternal effects") #create compedium description file
-write_dockerfile(maintainer = "ML") #Dockerfile will automatically pick the date of the last modified file, match it to that version of R and add it
-generate_badge() #generate a badge for the readme file
-
+#write_compendium_description(package = "Paternal_effects_map", description = "Mapping the past present and future research landscape of paternal effects") #create compedium description file
+#write_dockerfile(maintainer = "ML") #Dockerfile will automatically pick the date of the last modified file, match it to that version of R and add it
+#generate_badge() #generate a badge for the readme file
 # push the code to GitHub 
 # click on the badge or use the function below to get the build ready ahead of time.
  
