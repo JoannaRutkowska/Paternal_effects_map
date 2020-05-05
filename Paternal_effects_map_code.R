@@ -1,6 +1,6 @@
 #Title:  "Mapping the past, present and future research landscape of paternal effects"
 #Author: "Joanna Rutkowska, Malgorzata Lagisz, Russell Bonduriansky, Shinichi Nakagawa"
-#Date:   2 May 2020
+#Date:   5 May 2020
 
 
 # prepare 
@@ -47,12 +47,14 @@ names(nonempirical)
 # - VOSViewer indietified that the records are grouped in 3 clusters and created two files (network and map) which are uplodaed here.
 
 network <- read.delim(file = "2019-09-16-3cl-networktrial.txt", header = TRUE, sep = "\t", dec = ".")
-#str(network)
-network %>% rename(from.id = X1, to.id = X8 , links = X0.0227) -> network #rename columns
+str(network) 
+#network %>% rename(from.id = X1, to.id = X8 , links = X0.0227) -> network #rename columns in macOS
+network %>% rename(from.id = ď.ż1, to.id = X8 , links = X0.0227) -> network #rename columns in Windows
 
 map <- read.delim("2019-09-16-3cl-maptrial.txt")
-#str(map)
-#map %>% rename(id = ď.żid) -> map #rename columns
+str(map)
+#map %>% rename(id = X1) -> map #rename columns in macOS - SPRWADŻ PROSZę
+map %>% rename(id = ď.żid) -> map #rename columns in Windows
 
 #Make matrix of connections
 clusters <- select(map, id, cluster)
@@ -270,14 +272,14 @@ clusterEE$cluster <- as.factor(clusterEE$cluster)
 #Setting color pallets for each cluster for Figure 4a (fllows and starata have separate pallets)
 col_vectorMed3a = c('Abiotic habitat'="#6b452b",'Age'="#6fa6ab", 'Alcohol'="#b0b54e", 'Chemical substance'="#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d",'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c" )
 col_vectorMed3b = c('human'="#828585",'domesticated'="gray55",'captive'="gray10", 'wild'="gray60", 'men'="#828585",'non-human mammal'="gray5", 'fish'="gray15", 'other vertebrate'="gray25", 'other invertebrate'="gray35", 'plant'="gray45", 'Abiotic habitat'="#6b452b",'Age'="#6fa6ab",  'Alcohol'="#b0b54e", 'Chemical substance'= "#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d",'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c")
-col_vectorTox3a = c('Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d", 'Physiological factor'="#a2a39b")
-col_vectorTox3b = c('human'="#828585", 'captive'="gray10", 'wild brought into captivity'="gray50",'men'="#828585",'non-human mammal'="gray5", 'arthropod'="gray40", 'Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d", 'Physiological factor'="#a2a39b")
+col_vectorTox3a = c('Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1",  'Drug'="#70697d", 'Physiological factor'="#a2a39b")
+col_vectorTox3b = c('human'="#828585", 'captive'="gray10", 'wild brought into captivity'="gray50",'men'="#828585",'non-human mammal'="gray5", 'arthropod'="gray40", 'Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1", 'Drug'="#70697d", 'Physiological factor'="#a2a39b")
 col_vectorEE3a = c('Abiotic habitat'="#6b452b",'Age'="#6fa6ab", 'Chemical substance'="#7081a1", 'Diet'="#edcb8a", 'Past experience'="#3a3e3f", 'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c")
 col_vectorEE3b = c('captive'="gray10",  'wild brought into captivity'="gray50",'wild'="gray60", 'non-human mammal'="gray5", 'bird'="gray30" , 'fish'="gray15", 'other vertebrate'="gray25",'arthropod'="gray60" , 'other invertebrate'="gray35", 'plant'="gray45",'Abiotic habitat'="#6b452b",'Age'="#6fa6ab", 'Chemical substance'="#7081a1", 'Diet'="#edcb8a", 'Past experience'="#3a3e3f", 'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c")
 
 #Setting color palets for each cluster for figure 4b 
 col_vectorMed4 = c('Abiotic habitat'="#6b452b",'Age'="#6fa6ab",  'Alcohol'="#b0b54e", 'Chemical substance'="#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d",'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c", 'none'="black", 'independent'="#828585", 'diallel'="gray", 'NA'="white", 'no'="black", 'yes'="gray")
-col_vectorTox4 = c('Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1",  'Diet'="#edcb8a", 'Drug'="#70697d", 'Physiological factor'="#a2a39b", 'none'="black", 'independent'="#828585", 'diallel'="gray", 'no'="black")
+col_vectorTox4 = c('Abiotic habitat'="#6b452b",'Chemical substance'="#7081a1",  'Drug'="#70697d", 'Physiological factor'="#a2a39b", 'none'="black", 'independent'="#828585", 'diallel'="gray", 'no'="black")
 col_vectorEE4 = c('Abiotic habitat'="#6b452b",'Age'="#6fa6ab", 'Chemical substance'="#7081a1", 'Diet'="#edcb8a", 'Past experience'="#3a3e3f", 'Physiological factor'="#a2a39b",'Psychological factor'="#1b1b1c", 'none'="black", 'independent'="#828585", 'diallel'="gray", 'NA'="white", 'no'="black", 'yes'="gray")
 
 
@@ -411,7 +413,7 @@ ggplot(nonempirical_focus) +
   theme(aspect.ratio=0.7) +
   coord_polar(theta="y")  +
   facet_wrap(~ Taxon, nrow = 1) +
-  scale_fill_manual(values = c('age'="#6fa6ab",'alcohol'="#b0b54e", 'metabolic disorders'="#edcb8a", 'assisted reproduction techniques'= "#c03728",'effects of drugs/toxins'= "#7081a1", 'ecology & evolution'= "#e2d51d", 'general'= "#828585",  'none'= "#3a3e3f",'offspring cancer'="#e68c7c",'proximate mechanisms'="#c83e74",'other'="#daa03d" )) +
+  scale_fill_manual(values = c('age'="#6fa6ab",'alcohol'="#b0b54e", 'metabolic disorders'="#edcb8a", 'assisted reproduction techniques'= "#c03728",'effects of drugs/toxins'= "#7081a1", 'ecology & evolution'= "#e2d51d", 'general'= "#828585",  'none'= "white",'offspring cancer'="#e68c7c",'proximate mechanisms'="#c83e74",'other'="#daa03d" )) +
   theme_void() +
   theme(legend.position="bottom") +
   theme(legend.title=element_blank()) +
