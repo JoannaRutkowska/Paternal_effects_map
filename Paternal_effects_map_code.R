@@ -13,7 +13,7 @@ library(fulltext) #
 library(readxl) #reading in Excel files
 library(janitor) #data cleaning
 library(bibliometrix) #bibliometric analyses
-library(ggplot2) 
+library(ggplot2) #fancy plots
 library(ggbeeswarm) #making bee-swarm plots possible
 library(plotly)    #interactive plots using ggplot2
 library(easyalluvial) # allovial plots
@@ -53,7 +53,7 @@ network %>% rename(from.id = ď.ż1, to.id = X8 , links = X0.0227) -> network #r
 
 map <- read.delim("2019-09-16-3cl-maptrial.txt")
 str(map)
-#map %>% rename(id = X1) -> map #rename columns in macOS - SPRWADŻ PROSZę
+#map %>% rename(id = X1) -> map #rename columns in macOS - #not needed now
 map %>% rename(id = ď.żid) -> map #rename columns in Windows
 
 #Make matrix of connections
@@ -219,17 +219,17 @@ joined$cluster <- factor(joined$cluster, levels = c('Med','Tox','EcoEvo'))
 # Making figure showing total citation count (TC) according to publication year (PY) and map layer and cluster. 
 
 #Paperes not assigned to one of three clusters are in grey.
-ggplot(joined, aes(x=PY, y=TC, color = cluster, shape = map_layer))+
-  geom_point(size=4, alpha=0.6)+
-  scale_size(guide="none")+
-  scale_alpha(guide="none")+
-  scale_x_continuous(breaks=c(1970,1980,1990,2000, 2010, 2020))+
-  theme_classic()+
-  labs(x= "Publication year", y = "Total citations")+
-  theme_classic()+ 
+ggplot(joined, aes(x=PY, y=TC, color = cluster, shape = map_layer)) +
+  geom_point(size=4, alpha=0.6) +
+  scale_size(guide="none") +
+  scale_alpha(guide="none") +
+  scale_x_continuous(breaks=c(1970,1980,1990,2000, 2010, 2020)) +
+  theme_classic() +
+  labs(x= "Publication year", y = "Total citations") +
+  theme_classic() + 
   theme(legend.position = "none") +
-  theme(aspect.ratio=0.45)+
-  ggsave("Fig-3c.pdf")  
+  theme(aspect.ratio=0.18) +
+  ggsave("Fig-3c.pdf", scale = 4, width = 5.6, height = 1.4, units=c("cm"))  
 
 
 # Visulasiation of the empirical layer of the map asalluvial plots (Figure 4)
@@ -291,7 +291,7 @@ allMed3 <- alluvial_wide(select(clusterMed, Source_of_population, Taxon, Exposur
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Med cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Med-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
+  ggsave("Fig-Med-4a.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 allTox3 <- alluvial_wide(select(clusterTox, Source_of_population, Taxon, Exposure_category ), fill_by = 'last_variable',   order_levels = c('human', 'captive', 'wild brought into captivity','men','non-human mammal', 'arthropod' ), stratum_label_size = 7,
                          col_vector_flow = col_vectorTox3a, col_vector_value = col_vectorTox3b) + 
@@ -300,7 +300,7 @@ allTox3 <- alluvial_wide(select(clusterTox, Source_of_population, Taxon, Exposur
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Tox cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Tox-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm"))
+  ggsave("Fig-Tox-4a.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 allEE3 <- alluvial_wide(select(clusterEE,Source_of_population, Taxon, Exposure_category ), fill_by = 'last_variable',  order_levels = c('captive',  'wild brought into captivity','wild','non-human mammal', 'bird', 'fish', 'other vertebrate','arthropod', 'other invertebrate', 'plant', 'Abiotic habitat','Age','Chemical substance',  'Diet', 'Past experience', 'Physiological factor','Psychological factor'), stratum_label_size = 7,
                         col_vector_flow = col_vectorEE3a, col_vector_value = col_vectorEE3b) +
@@ -309,7 +309,7 @@ allEE3 <- alluvial_wide(select(clusterEE,Source_of_population, Taxon, Exposure_c
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'EcoEvo cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-EE-4a.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
+  ggsave("Fig-EE-4a.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 
 # Graphs for figure 4b
@@ -320,7 +320,7 @@ allMed4 <- alluvial_wide(select(clusterMed, Exposure_category, Maternal_exposure
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Med cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Med-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
+  ggsave("Fig-Med-4b.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 allTox4 <- alluvial_wide(select(clusterTox, Exposure_category, Maternal_exposure, Offspring_exposure), fill_by = 'first_variable',   order_levels = c('Abiotic habitat', 'Chemical substance',  'Diet', 'Drug', 'Physiological factor', 'none', 'independent', 'diallel' , 'no' ), stratum_label_size = 7,
                          col_vector_flow = col_vectorTox4, col_vector_value = col_vectorTox4) + 
@@ -329,7 +329,7 @@ allTox4 <- alluvial_wide(select(clusterTox, Exposure_category, Maternal_exposure
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'Tox cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-Tox-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm"))
+  ggsave("Fig-Tox-4b.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 allEE4 <- alluvial_wide(select(clusterEE,Exposure_category, Maternal_exposure, Offspring_exposure), fill_by = 'first_variable',  order_levels = c('Abiotic habitat','Age', 'Chemical substance', 'Diet', 'Past experience', 'Physiological factor','Psychological factor', 'none' , 'independent' , 'diallel' , 'NA', 'no', 'yes'), stratum_label_size = 7,
                         col_vector_flow = col_vectorEE4, col_vector_value = col_vectorEE4) +
@@ -338,7 +338,7 @@ allEE4 <- alluvial_wide(select(clusterEE,Exposure_category, Maternal_exposure, O
   scale_x_discrete(expand = c(0,0.2)) +
   labs(title= 'EcoEvo cluster', y = "Frequency") +
   theme(plot.title = element_text(size = 20, face="bold")) +
-  ggsave("Fig-EE-4b.pdf", scale = 6, width = 10, height = 4, units=c("cm") )
+  ggsave("Fig-EE-4b.pdf", scale = 9, width = 5, height = 1.4, units=c("cm"))
 
 
  
@@ -352,11 +352,12 @@ freq3$Year <- as.numeric(as.character(freq3$Year))
 ggplot(freq3, aes(Year, Freq)) +
   geom_area(aes(fill = Exposure_category)) +
   scale_fill_manual(values = c("#6b452b", "#6fa6ab","#b0b54e", "#7081a1", "#edcb8a", "#70697d", "#3a3e3f", "#a2a39b",  "#1b1b1c","#a89985")) +
-  scale_y_continuous(name="Frequency") +
+  expand_limits(x = c(1965, 2020), y = c(0, 60)) +
   scale_x_continuous(breaks=c(1970, 1980, 1990, 2000, 2010, 2020)) +
+  scale_y_continuous(breaks=c(0,10,20,30,40,50,60), name="Frequency") + 
   theme_classic() +
   theme(aspect.ratio=0.4) +
-  ggsave("Fig-2a.pdf")  
+  ggsave("Fig-2a.pdf", scale = 4, width = 4, height = 2, units=c("cm") )  
 
 
 # Visulasiation of the non-empirical layer of the map 
@@ -379,15 +380,15 @@ freq24 <- bind_rows(freq2, first_years) %>% arrange(Year, Type)
 freq24$Type <- factor(freq24$Type, levels = c('commentary-perspective', 'narrative review','systematic review family','theoretical paper'))
 
 #Plotting the timeline of non-empirical papers
-ggplot(freq24, aes(x=Year, y=Freq,fill = Type) ) +
+ggplot(freq24, aes(x=Year, y=Freq, fill = Type) ) +
   geom_area() +
   theme_classic() +
   scale_fill_manual(values = c('theoretical paper' = "#141414", 'systematic review family' = "#828585" ,'narrative review' = "gray", 'commentary-perspective' = "#4f5157" )) +
-  expand_limits(x = c(1960, 2020)) +
-  scale_x_continuous(breaks=c(1970,1980,1990,2000, 2010, 2020)) +
-  scale_y_continuous(breaks=c(0,10,20), name="Frequency") +
-  theme(aspect.ratio=0.2) +
-  ggsave("Fig-2b.pdf")
+  expand_limits(x = c(1965, 2020), y = c(0, 60)) +
+  scale_x_continuous(breaks=c(1970, 1980, 1990, 2000, 2010, 2020)) +
+  scale_y_continuous(breaks=c(0,10,20,30,40,50,60), name="Frequency") +
+  theme(aspect.ratio=0.4) +
+  ggsave("Fig-2b.pdf", scale = 4, width = 4.2, height = 2, units=c("cm"))
 
 
 # Visualising focus of non-empircal studies
@@ -415,9 +416,9 @@ ggplot(nonempirical_focus) +
   facet_wrap(~ Taxon, nrow = 1) +
   scale_fill_manual(values = c('age'="#6fa6ab",'alcohol'="#b0b54e", 'metabolic disorders'="#edcb8a", 'assisted reproduction techniques'= "#c03728",'effects of drugs/toxins'= "#7081a1", 'ecology & evolution'= "#e2d51d", 'general'= "#828585",  'none'= "white",'offspring cancer'="#e68c7c",'proximate mechanisms'="#c83e74",'other'="#daa03d" )) +
   theme_void() +
-  theme(legend.position="bottom") +
+  theme(legend.position="right") +
   theme(legend.title=element_blank()) +
-  ggsave("Fig-2c.pdf")
+  ggsave("Fig-2c.pdf", scale = 4, width = 5, height = 3, units=c("cm") )
 
 
 # Calculations of %s of empirical clusters for the main text
